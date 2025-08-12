@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Personajes</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="catalog-bg">
+
+    <header class="top-navbar">
+        <a href="{% url 'welcome' %}" class="navbar-brand">Catálogo de Anime</a>
+    </header>
+
+    <div class="character-list-page">
+        <h1 class="list-title">Índice de Personajes</h1>
+        
+        <div class="catalog-container">
+            {% for anime, personajes in animes.items %}
+                <div class="anime-section">
+                    <h2 class="anime-title-header">{{ anime }}</h2>
+                    <div class="character-grid">
+                        {% for personaje in personajes %}
+                            <div class="character-card-small">{{ personaje }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        
+        <a href="{% url 'search_selection' %}" class="back-to-search-btn">Regresar a la Búsqueda</a>
+    </div>
+
+</body>
+</html>

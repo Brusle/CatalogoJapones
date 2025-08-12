@@ -26,12 +26,16 @@ class SearchView(View):
     
 class CharacterListView(View):
     def get(self, request):
-        # Cargamos los datos de los personajes
         df_personajes = cargar_datos_verificados()
-        # Convertimos el DataFrame a una lista de diccionarios para usarla en la plantilla
-        lista_personajes = df_personajes.to_dict('records')
+        # Agrupamos los personajes por Anime
+        animes = {}
+        for _, row in df_personajes.iterrows():
+            anime = row['Anime']
+            if anime not in animes:
+                animes[anime] = []
+            animes[anime].append(row['Personaje'])
         
         context = {
-            'personajes': lista_personajes
+            'animes': animes
         }
         return render(request, 'character_list.html', context)

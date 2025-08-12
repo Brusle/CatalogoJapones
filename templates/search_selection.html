@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,7 +6,7 @@
     <title>Búsqueda de Personajes</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<body>
+<body class="search-bg">
 
     <header class="top-navbar">
         <a href="{% url 'welcome' %}" class="navbar-brand">Catálogo de Anime</a>
@@ -19,23 +18,15 @@
 
     <main class="search-content-area">
         <form action="{% url 'search_results' %}" method="get" class="search-card">
-            
             <input type="hidden" name="metric" id="metric-input" value="cosine">
-            
-            <textarea name="query" class="query-input" rows="4" placeholder="Describe al personaje que buscas... por ejemplo, 'el soldado más fuerte de la humanidad'"></textarea>
-            
+            <textarea name="query" class="query-input" rows="4" placeholder="Describe al personaje que buscas..."></textarea>
             <button type="submit" class="search-submit-btn">Buscar</button>
-            
         </form>
+
+        <div style="margin-top: 25px;">
+            <a href="{% url 'character_list' %}" class="catalog-btn">Ver Catálogo de Personajes</a>
+        </div>
     </main>
-
-    <button type="submit" class="search-submit-btn">Buscar</button>
-
-            <div style="margin-top: 25px;">
-                <a href="{% url 'character_list' %}" style="color: white; font-size: 0.9em; text-decoration: none;">Ver todos los personajes disponibles</a>
-            </div>
-            
-        </form>
 
     <script>
         const metricButtons = document.querySelectorAll('.metric-btn');
@@ -49,7 +40,5 @@
             });
         });
     </script>
-    
-
 </body>
 </html>

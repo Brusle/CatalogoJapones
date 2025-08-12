@@ -1,20 +1,16 @@
-/* Estilos para el cuerpo de la página (Fondo y centrado) */
+/* --- ESTILOS GENERALES Y DE FONDO --- */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    color: white; /* Cambiamos el color de texto por defecto a blanco para la barra */
-    
-    /* --- USAREMOS LA NUEVA IMAGEN DE FONDO --- */
-    background-image: url('../images/fondo2.png'); 
+    color: white;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    
-    /* Capa de distorsión */
     position: relative;
 }
 
+/* Capa de distorsión que se aplica sobre el fondo */
 body::before {
     content: '';
     position: absolute;
@@ -22,25 +18,33 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Oscurecemos un poco más para el contraste */
+    background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(8px);
-    z-index: -1; /* Se asegura que esté detrás de todo el contenido */
+    z-index: -1;
 }
 
-/* --- NUEVA BARRA DE NAVEGACIÓN SUPERIOR --- */
+/* Clases específicas para cada fondo de página */
+body.welcome-bg { background-image: url('../images/fondo1.png'); }
+body.search-bg { background-image: url('../images/fondo2.png'); }
+body.catalog-bg { background-image: url('../images/fondo3.png'); }
+body.results-bg { background-image: url('../images/fondo4.png'); }
+
+
+/* --- BARRA DE NAVEGACIÓN SUPERIOR --- */
 .top-navbar {
     display: flex;
-    justify-content: space-between; /* Alinea los elementos a los extremos */
+    justify-content: space-between;
     align-items: center;
     padding: 15px 40px;
-    background-color: rgba(0, 0, 0, 0.3); /* Fondo semitransparente para la barra */
+    background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    position: fixed; /* Fija la barra en la parte superior */
+    position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     box-sizing: border-box;
+    z-index: 100;
 }
 
 .navbar-brand {
@@ -50,9 +54,208 @@ body::before {
     color: white;
 }
 
-.navbar-metric-selector {
+/* ... (otros estilos de la barra de navegación que ya tienes) */
+
+
+/* --- PÁGINA DE BIENVENIDA --- */
+.welcome-container {
     display: flex;
-    gap: 15px; /* Espacio entre botones */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    position: relative; 
+    z-index: 1;
+}
+
+
+/* --- PÁGINA DE BÚSQUEDA --- */
+.search-content-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.search-card {
+    background-color: transparent;
+    text-align: center;
+    width: 100%;
+    max-width: 650px;
+}
+
+.query-input {
+    width: 100%;
+    padding: 20px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 15px;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.9);
+    resize: vertical;
+}
+
+.query-input::placeholder { color: #999; }
+.query-input:focus { outline: 2px solid #fe8c00; }
+
+
+/* --- PÁGINA DE RESULTADOS --- */
+.results-page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 120px 40px 40px 40px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+}
+
+.search-type-header {
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.results-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+    flex-direction: row-reverse;
+}
+
+.result-card {
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #333;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 30%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.result-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.character-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.character-name { font-size: 2em; font-weight: bold; margin: 0 0 10px 0; color: #222; }
+.anime-name { font-size: 1.1em; font-weight: bold; margin: 0 0 20px 0; color: #555; }
+.affinity-score { font-size: 1em; color: #c94a0a; font-weight: bold; }
+
+
+/* --- PÁGINA DEL CATÁLOGO --- */
+.character-list-page {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1400px;
+    padding: 120px 40px 40px 40px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.list-title {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 40px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.catalog-container { width: 100%; }
+.anime-section { margin-bottom: 40px; }
+
+.anime-title-header {
+    color: white;
+    font-size: 2em;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(254, 140, 0, 0.8);
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.character-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+.character-card-small {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+/* --- BOTONES (ESTILOS COMPARTIDOS) --- */
+.welcome-button, .search-submit-btn, .search-again-btn, .back-to-search-btn, .catalog-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    border-radius: 50px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border: none;
+}
+
+.welcome-button:hover, .search-submit-btn:hover, .search-again-btn:hover, .back-to-search-btn:hover, .catalog-btn:hover {
+    transform: translateY(-3px);
+}
+
+.welcome-button {
+    background: linear-gradient(to right, #fe8c00, #f83600);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.welcome-button:hover { box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); }
+
+.search-submit-btn, .search-again-btn, .back-to-search-btn {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.search-submit-btn:hover, .search-again-btn:hover, .back-to-search-btn:hover { box-shadow: 0 8px 25px rgba(37, 117, 252, 0.4); }
+
+.catalog-btn {
+    background: none;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    padding: 10px 25px;
+    font-size: 1em;
+}
+.catalog-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: white;
 }
 
 .metric-btn {
@@ -77,248 +280,4 @@ body::before {
     color: white;
     border-color: transparent;
     box-shadow: 0 2px 10px rgba(254, 140, 0, 0.4);
-}
-
-
-/* --- ÁREA PRINCIPAL DE CONTENIDO (Formulario de búsqueda) --- */
-.search-content-area {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* Ocupa toda la altura para centrar el contenido */
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-.search-card {
-    background-color: transparent; /* Hacemos el fondo de la tarjeta transparente */
-    text-align: center;
-    width: 100%;
-    max-width: 650px;
-}
-
-/* Campo de texto (usaremos textarea para descripciones más largas) */
-.query-input {
-    width: 100%;
-    padding: 20px;
-    font-size: 1.2em;
-    border: none;
-    border-radius: 15px;
-    box-sizing: border-box;
-    margin-bottom: 30px;
-    text-align: center;
-    color: #333;
-    background-color: rgba(255, 255, 255, 0.9);
-    resize: vertical; /* Permite al usuario ajustar la altura */
-}
-
-.query-input::placeholder {
-    color: #999;
-}
-
-.query-input:focus {
-    outline: 2px solid #fe8c00;
-}
-
-/* Botón de búsqueda final */
-.search-submit-btn {
-    display: inline-block;
-    padding: 18px 40px;
-    font-size: 1.3em;
-    font-weight: bold;
-    color: white;
-    background: linear-gradient(to right, #6a11cb, #2575fc); /* Degradado azul/violeta */
-    border: none;
-    border-radius: 50px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-
-.search-submit-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(37, 117, 252, 0.4);
-}
-
-/* Ocultamos el botón original de la página de bienvenida */
-.welcome-button {
-    display: none;
-}
-
-/* --- ESTILOS PARA LA PÁGINA DE RESULTADOS DE BÚSQUEDA --- */
-
-/* Contenedor principal para toda la página de resultados */
-.results-page-container {
-    display: flex;
-    flex-direction: column; /* Alinea los elementos verticalmente */
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 40px;
-    box-sizing: border-box;
-    position: relative;
-    z-index: 1;
-}
-
-/* Encabezado que muestra el tipo de búsqueda */
-.search-type-header {
-    background-color: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(5px);
-    padding: 15px 30px;
-    border-radius: 50px;
-    font-size: 1.2em;
-    font-weight: bold;
-    color: white;
-    margin-bottom: 40px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* Contenedor para las tarjetas de resultados */
-.results-container {
-    display: flex;
-    justify-content: center;
-    align-items: stretch; /* Asegura que todas las tarjetas tengan la misma altura */
-    gap: 30px; /* Espacio entre tarjetas */
-    width: 100%;
-    max-width: 1200px;
-    
-    /* --- LÓGICA DE ORDEN --- */
-    /* Muestra los elementos de derecha a izquierda */
-    flex-direction: row-reverse;
-}
-
-/* Tarjeta individual para cada personaje */
-.result-card {
-    background-color: rgba(255, 255, 255, 0.95);
-    color: #333;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    width: 30%; /* Cada tarjeta ocupa aproximadamente un tercio del espacio */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.result-card:hover {
-    transform: translateY(-10px) scale(1.03);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-}
-
-/* Nombre del personaje (grande) */
-.character-name {
-    font-size: 2em;
-    font-weight: bold;
-    margin: 0 0 10px 0;
-    color: #222;
-}
-
-/* Nombre del anime (pequeño y en negrita) */
-.anime-name {
-    font-size: 1.1em;
-    font-weight: bold;
-    margin: 0 0 20px 0;
-    color: #555;
-}
-
-/* Puntuación de afinidad (con color distintivo) */
-.affinity-score {
-    font-size: 1em;
-    color: #c94a0a; /* Un color naranja oscuro para la afinidad */
-    font-weight: bold;
-}
-
-/* Botón para buscar de nuevo */
-.search-again-btn {
-    display: inline-block;
-    margin-top: 50px;
-    padding: 15px 30px;
-    font-size: 1.2em;
-    font-weight: bold;
-    color: white;
-    background: linear-gradient(to right, #6a11cb, #2575fc);
-    border: none;
-    border-radius: 50px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-
-.search-again-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(37, 117, 252, 0.4);
-}
-
-/* --- ESTILOS PARA LA PÁGINA DE LISTA DE PERSONAJES --- */
-
-/* Contenedor principal de la página */
-.character-list-page {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    max-width: 1400px;
-    padding: 100px 40px 40px 40px; /* Padding superior para no quedar debajo de la barra */
-    box-sizing: border-box;
-    text-align: center;
-}
-
-.list-title {
-    font-size: 2.5em;
-    font-weight: bold;
-    color: white;
-    margin-bottom: 40px;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-}
-
-/* Grid para mostrar las tarjetas de personajes */
-.character-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Grid responsivo */
-    gap: 25px;
-    margin-bottom: 50px;
-}
-
-/* Tarjeta individual para cada personaje */
-.character-card {
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(15px);
-    padding: 20px;
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: background-color 0.3s ease;
-}
-
-.character-card:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-.card-character-name {
-    font-size: 1.3em;
-    font-weight: bold;
-    margin: 0 0 5px 0;
-    color: white;
-}
-
-.card-anime-name {
-    font-size: 0.9em;
-    color: rgba(255, 255, 255, 0.7);
-}
-
-/* Botón para regresar */
-.back-to-search-btn {
-    display: inline-block;
-    padding: 15px 30px;
-    font-size: 1.2em;
-    font-weight: bold;
-    color: white;
-    background: linear-gradient(to right, #6a11cb, #2575fc);
-    border: none;
-    border-radius: 50px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-
-.back-to-search-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(37, 117, 252, 0.4);
 }

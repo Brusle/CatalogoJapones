@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,34 +6,35 @@
     <title>Resultados de Búsqueda</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<body style="--bg-image: url('{% static 'images/fondo3.png' %}');">
+<body class="results-bg">
+
+    <header class="top-navbar">
+        <a href="{% url 'welcome' %}" class="navbar-brand">Catálogo de Anime</a>
+    </header>
 
     <div class="results-page-container">
-    
         <div class="search-type-header">
-            {% if metric == 'cosine' %}
-                Búsqueda por Similaridad Coseno
-            {% else %}
-                Búsqueda por Distancia Euclidiana
-            {% endif %}
+            Búsqueda por: {% if metric == 'cosine' %}Similaridad Coseno{% else %}Distancia Euclidiana{% endif %}
         </div>
         
         <div class="results-container">
             {% if resultados %}
                 {% for personaje in resultados %}
                     <div class="result-card">
+                        {% if personaje.imagen %}
+                            <img src="{% static personaje.imagen %}" alt="{{ personaje.Personaje }}" class="character-image">
+                        {% endif %}
                         <h2 class="character-name">{{ personaje.Personaje }}</h2>
                         <p class="anime-name"><b>{{ personaje.Anime }}</b></p>
                         <p class="affinity-score">Afinidad: {{ personaje.distancia }}</p>
                     </div>
                 {% endfor %}
             {% else %}
-                <p>No se encontraron personajes con esa descripción.</p>
+                <p style="color: white; font-size: 1.2em;">No se encontraron personajes con esa descripción.</p>
             {% endif %}
         </div>
 
         <a href="{% url 'search_selection' %}" class="search-again-btn">Buscar otro personaje</a>
-
     </div>
 
 </body>
