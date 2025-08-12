@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultados de Búsqueda</title>
+</head>
+<body>
+    <h1>Resultados para: "{{ query }}"</h1>
+    
+    {% if resultados %}
+        <ul>
+        {% for personaje in resultados %}
+            <li>
+                <strong>{{ personaje.Personaje }}</strong> ({{ personaje.Anime }}) - 
+                Distancia: {{ personaje.distancia }}
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No se encontraron resultados.</p>
+    {% endif %}
+    
+    <a href="/search/">Realizar otra búsqueda</a>
+</body>
+</html>
