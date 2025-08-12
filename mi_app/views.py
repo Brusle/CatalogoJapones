@@ -45,3 +45,7 @@ class ClienteView(View):
 
         return JsonResponse(data)
         """
+
+class PaginaView(View):
+    def get(self, request):
+        return JsonResponse({"mensaje": "Hola desde Paginita"})

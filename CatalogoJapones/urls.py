@@ -17,8 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from mi_app.views import ClienteView
+from mi_app.views import PaginaView as PaginitaView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('cliente/', ClienteView.as_view()),
+    path('paginita/', PaginitaView.as_view())
 ]
+
+
