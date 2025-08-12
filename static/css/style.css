@@ -247,3 +247,78 @@ body::before {
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(37, 117, 252, 0.4);
 }
+
+/* --- ESTILOS PARA LA PÁGINA DE LISTA DE PERSONAJES --- */
+
+/* Contenedor principal de la página */
+.character-list-page {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1400px;
+    padding: 100px 40px 40px 40px; /* Padding superior para no quedar debajo de la barra */
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.list-title {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 40px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+/* Grid para mostrar las tarjetas de personajes */
+.character-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Grid responsivo */
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+/* Tarjeta individual para cada personaje */
+.character-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.character-card:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.card-character-name {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin: 0 0 5px 0;
+    color: white;
+}
+
+.card-anime-name {
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Botón para regresar */
+.back-to-search-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.back-to-search-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(37, 117, 252, 0.4);
+}

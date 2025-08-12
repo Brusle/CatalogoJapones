@@ -29,6 +29,14 @@
         </form>
     </main>
 
+    <button type="submit" class="search-submit-btn">Buscar</button>
+
+            <div style="margin-top: 25px;">
+                <a href="{% url 'character_list' %}" style="color: white; font-size: 0.9em; text-decoration: none;">Ver todos los personajes disponibles</a>
+            </div>
+            
+        </form>
+
     <script>
         const metricButtons = document.querySelectorAll('.metric-btn');
         const metricInput = document.getElementById('metric-input');
@@ -41,6 +49,7 @@
             });
         });
     </script>
+    
 
 </body>
 </html>
