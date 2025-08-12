@@ -1,25 +1,41 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Resultados de Búsqueda</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<body>
-    <h1>Resultados para: "{{ query }}"</h1>
+<body style="--bg-image: url('{% static 'images/fondo3.png' %}');">
+
+    <div class="results-page-container">
     
-    {% if resultados %}
-        <ul>
-        {% for personaje in resultados %}
-            <li>
-                <strong>{{ personaje.Personaje }}</strong> ({{ personaje.Anime }}) - 
-                Distancia: {{ personaje.distancia }}
-            </li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>No se encontraron resultados.</p>
-    {% endif %}
-    
-    <a href="/search/">Realizar otra búsqueda</a>
+        <div class="search-type-header">
+            {% if metric == 'cosine' %}
+                Búsqueda por Similaridad Coseno
+            {% else %}
+                Búsqueda por Distancia Euclidiana
+            {% endif %}
+        </div>
+        
+        <div class="results-container">
+            {% if resultados %}
+                {% for personaje in resultados %}
+                    <div class="result-card">
+                        <h2 class="character-name">{{ personaje.Personaje }}</h2>
+                        <p class="anime-name"><b>{{ personaje.Anime }}</b></p>
+                        <p class="affinity-score">Afinidad: {{ personaje.distancia }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No se encontraron personajes con esa descripción.</p>
+            {% endif %}
+        </div>
+
+        <a href="{% url 'search_selection' %}" class="search-again-btn">Buscar otro personaje</a>
+
+    </div>
+
 </body>
 </html>
