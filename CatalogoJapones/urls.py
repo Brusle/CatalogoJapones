@@ -1,28 +1,10 @@
-"""
-URL configuration for CatalogoJapones project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path
-from mi_app.views import ClienteView
-from mi_app.views import PaginaView as PaginitaView
+from mi_app.views import WelcomeView, SearchSelectionView, SearchView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('cliente/', ClienteView.as_view()),
-    path('paginita/', PaginitaView.as_view())
+    path('', WelcomeView.as_view(), name='welcome'),
+    path('search/', SearchSelectionView.as_view(), name='search_selection'),
+    path('search/results/', SearchView.as_view(), name='search_results'),
 ]
-
-

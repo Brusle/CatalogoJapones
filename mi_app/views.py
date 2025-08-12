@@ -1,51 +1,24 @@
-from django.http import JsonResponse, HttpResponseBadRequest
-from django.views import View
-import json
-from django.utils.decorators import method_decorator
-from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
-
 from .models import Cliente
+from django.views import View
+from vector_db import buscar_personajes
 
-#Create your views here.
-class ClienteView(View):
-    @method_decorator(csrf_exempt, name='dispatch')
-    def get (self, request):
-        Clientes = Cliente.objects.all().values()
-        return JsonResponse(list(Clientes), safe=False)
-    
-    def post(self, request):
-        try:
-            data = json.loads(request.body)
-            cliente = cliente.objects.create(
-                nombre=data['nombre'],
-                apellido=data['apellido'],
-                correo=data['correo'],
-                telefono=data['telefono'])
-            return JsonResponse({"mensaje": "Cliente creado", "id": cliente.nombre})
-        except:
-            return HttpResponseBadRequest({"Error": "Formato Invalido"})
-            
-"""
+class WelcomeView(View):
     def get(self, request):
-        data = {
-            "respuesta": "Hola Mundo"
-        }
-        return JsonResponse(data)
-    
-    def post(self, request):
-        try:
-            body = json.loads(request.body)
-        except:
-            return HttpResponseBadRequest("Formato Invalido")
+        return render(request, 'welcome.html')
+
+class SearchSelectionView(View):
+    def get(self, request):
+        return render(request, 'search_selection.html')
+
+class SearchView(View):
+    def get(self, request):
+        query = request.GET.get('query', '')
+        metric = request.GET.get('metric', 'cosine')
         
-        data = {
-            "status": "ok",
-        }
-
-        return JsonResponse(data)
-        """
-
-class PaginaView(View):
-    def get(self, request):
-        return JsonResponse({"mensaje": "Hola desde Paginita"})
+        if query:
+            resultados = buscar_personajes(query, metric)
+        else:
+            resultados = []
+            
+        return render(request, 'search_results.html', {'resultados': resultados, 'query': query})
