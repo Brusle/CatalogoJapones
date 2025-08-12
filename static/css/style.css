@@ -1,68 +1,146 @@
-/* Estilos para el cuerpo de la página */
+/* Estilos para el cuerpo de la página (Fondo y centrado) */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
+    color: white; /* Cambiamos el color de texto por defecto a blanco para la barra */
     
-    /* --- Configuración del Fondo --- */
-    /* Reemplaza 'fondo1.png' si tu imagen tiene otro nombre */
-    background-image: url('../images/fondo1.png');
-    background-size: cover; /* Hace que la imagen cubra todo el espacio */
-    background-position: center; /* Centra la imagen */
-    background-attachment: fixed; /* Mantiene la imagen fija al hacer scroll */
+    /* --- USAREMOS LA NUEVA IMAGEN DE FONDO --- */
+    background-image: url('../images/fondo2.png'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     
-    /* Centrado del contenido */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Ocupa toda la altura de la pantalla */
-    
-    /* Necesario para la capa de distorsión */
-    position: relative; 
+    /* Capa de distorsión */
+    position: relative;
 }
 
-/* --- Capa de Distorsión (efecto sobre la imagen de fondo) --- */
 body::before {
-    content: ''; /* Obligatorio para que se muestre el pseudo-elemento */
-    position: absolute; /* Se posiciona sobre el body */
+    content: '';
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    
-    /* Efecto de oscurecimiento */
-    background-color: rgba(0, 0, 0, 0.4); 
-    
-    /* Efecto de desenfoque (distorsión) */
-    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.5); /* Oscurecemos un poco más para el contraste */
+    backdrop-filter: blur(8px);
+    z-index: -1; /* Se asegura que esté detrás de todo el contenido */
 }
 
-/* --- Contenedor Principal --- */
-.welcome-container {
+/* --- NUEVA BARRA DE NAVEGACIÓN SUPERIOR --- */
+.top-navbar {
+    display: flex;
+    justify-content: space-between; /* Alinea los elementos a los extremos */
+    align-items: center;
+    padding: 15px 40px;
+    background-color: rgba(0, 0, 0, 0.3); /* Fondo semitransparente para la barra */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: fixed; /* Fija la barra en la parte superior */
+    width: 100%;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+}
+
+.navbar-brand {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+.navbar-metric-selector {
+    display: flex;
+    gap: 15px; /* Espacio entre botones */
+}
+
+.metric-btn {
+    padding: 10px 20px;
+    font-size: 0.9em;
+    font-weight: bold;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50px;
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.metric-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.metric-btn.active {
+    background: linear-gradient(to right, #fe8c00, #f83600);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 2px 10px rgba(254, 140, 0, 0.4);
+}
+
+
+/* --- ÁREA PRINCIPAL DE CONTENIDO (Formulario de búsqueda) --- */
+.search-content-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ocupa toda la altura para centrar el contenido */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.search-card {
+    background-color: transparent; /* Hacemos el fondo de la tarjeta transparente */
     text-align: center;
-    /* Asegura que el botón esté por encima de la capa de distorsión */
-    position: relative; 
-    z-index: 1;
+    width: 100%;
+    max-width: 650px;
 }
 
-/* --- Botón Estilizado --- */
-.welcome-button {
+/* Campo de texto (usaremos textarea para descripciones más largas) */
+.query-input {
+    width: 100%;
+    padding: 20px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 15px;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.9);
+    resize: vertical; /* Permite al usuario ajustar la altura */
+}
+
+.query-input::placeholder {
+    color: #999;
+}
+
+.query-input:focus {
+    outline: 2px solid #fe8c00;
+}
+
+/* Botón de búsqueda final */
+.search-submit-btn {
     display: inline-block;
-    padding: 18px 35px;
+    padding: 18px 40px;
     font-size: 1.3em;
     font-weight: bold;
     color: white;
-    background: linear-gradient(to right, #fe8c00, #f83600); /* Degradado naranja/rojo */
+    background: linear-gradient(to right, #6a11cb, #2575fc); /* Degradado azul/violeta */
     border: none;
-    border-radius: 50px; /* Bordes completamente redondeados */
+    border-radius: 50px;
     text-decoration: none;
     cursor: pointer;
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Efecto al pasar el mouse sobre el botón */
-.welcome-button:hover {
-    transform: translateY(-3px); /* Eleva el botón ligeramente */
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+.search-submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(37, 117, 252, 0.4);
+}
+
+/* Ocultamos el botón original de la página de bienvenida */
+.welcome-button {
+    display: none;
 }

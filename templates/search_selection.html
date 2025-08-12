@@ -1,22 +1,46 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Seleccionar Tipo de Búsqueda</title>
+    <title>Búsqueda de Personajes</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <h1>Selecciona el Tipo de Búsqueda</h1>
-    <form action="/search/results/" method="get">
-        <label for="metric">Elige la métrica de búsqueda:</label>
-        <select name="metric" id="metric">
-            <option value="cosine">Similaridad Coseno</option>
-            <option value="l2">Distancia Euclidiana</option>
-        </select>
-        <br><br>
-        <label for="query">Describe al personaje:</label>
-        <input type="text" id="query" name="query" size="50">
-        <br><br>
-        <button type="submit">Buscar</button>
-    </form>
+
+    <header class="top-navbar">
+        <a href="{% url 'welcome' %}" class="navbar-brand">Catálogo de Anime</a>
+        <div class="navbar-metric-selector">
+            <button type="button" class="metric-btn active" data-metric="cosine">Similaridad Coseno</button>
+            <button type="button" class="metric-btn" data-metric="l2">Distancia Euclidiana</button>
+        </div>
+    </header>
+
+    <main class="search-content-area">
+        <form action="{% url 'search_results' %}" method="get" class="search-card">
+            
+            <input type="hidden" name="metric" id="metric-input" value="cosine">
+            
+            <textarea name="query" class="query-input" rows="4" placeholder="Describe al personaje que buscas... por ejemplo, 'el soldado más fuerte de la humanidad'"></textarea>
+            
+            <button type="submit" class="search-submit-btn">Buscar</button>
+            
+        </form>
+    </main>
+
+    <script>
+        const metricButtons = document.querySelectorAll('.metric-btn');
+        const metricInput = document.getElementById('metric-input');
+
+        metricButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                metricButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                metricInput.value = button.dataset.metric;
+            });
+        });
+    </script>
+
 </body>
 </html>
