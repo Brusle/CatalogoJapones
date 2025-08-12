@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Seleccionar Tipo de Búsqueda</title>
+</head>
+<body>
+    <h1>Selecciona el Tipo de Búsqueda</h1>
+    <form action="/search/results/" method="get">
+        <label for="metric">Elige la métrica de búsqueda:</label>
+        <select name="metric" id="metric">
+            <option value="cosine">Similaridad Coseno</option>
+            <option value="l2">Distancia Euclidiana</option>
+        </select>
+        <br><br>
+        <label for="query">Describe al personaje:</label>
+        <input type="text" id="query" name="query" size="50">
+        <br><br>
+        <button type="submit">Buscar</button>
+    </form>
+</body>
+</html>
