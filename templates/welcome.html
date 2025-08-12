@@ -10,15 +10,7 @@
 <body>
 
     <div class="welcome-container">
-        <div class="welcome-box">
-            
-            <img class="welcome-image" src="{% static 'images/fondo1.png' %}" alt="Logo del Catálogo de Anime">
-            <h1>Catálogo de Anime</h1>
-            <p>Encuentra a tus personajes favoritos usando el poder de la IA.</p>
-            
-            <a href="{% url 'search_selection' %}" class="welcome-button">Iniciar Búsqueda</a>
-            
-        </div>
+        <a href="{% url 'search_selection' %}" class="welcome-button">Iniciar Búsqueda</a>
     </div>
 
 </body>
