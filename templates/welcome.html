@@ -1,12 +1,25 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Bienvenido al Catálogo de Anime</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <h1>Bienvenido a mi Catálogo de Personajes de Anime</h1>
-    <p>Usa la barra de navegación para encontrar a tus personajes favoritos.</p>
-    <a href="/search/">Comenzar Búsqueda</a>
+
+    <div class="welcome-container">
+        <div class="welcome-box">
+            
+            <img class="welcome-image" src="{% static 'images/fondo1.png' %}" alt="Logo del Catálogo de Anime">
+            <h1>Catálogo de Anime</h1>
+            <p>Encuentra a tus personajes favoritos usando el poder de la IA.</p>
+            
+            <a href="{% url 'search_selection' %}" class="welcome-button">Iniciar Búsqueda</a>
+            
+        </div>
+    </div>
+
 </body>
 </html>

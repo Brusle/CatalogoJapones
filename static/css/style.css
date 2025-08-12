@@ -1,0 +1,72 @@
+/* Estilos generales (los que ya tenías) */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+/* --- NUEVOS ESTILOS PARA LA PÁGINA DE BIENVENIDA --- */
+
+/* Contenedor principal que centra todo vertical y horizontalmente */
+.welcome-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    text-align: center;
+    background: linear-gradient(to right, #6a11cb, #2575fc); /* Fondo degradado */
+}
+
+/* Caja para el contenido */
+.welcome-box {
+    background-color: white;
+    padding: 40px 50px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+}
+
+/* Estilo para la imagen que vas a cargar */
+.welcome-image {
+    max-width: 200px; /* Ajusta el tamaño de tu imagen */
+    height: auto;
+    margin-bottom: 25px; /* Espacio entre la imagen y el título */
+}
+
+/* Título principal */
+.welcome-box h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Párrafo descriptivo */
+.welcome-box p {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* El botón bonito y centrado */
+.welcome-button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(to right, #fe8c00, #f83600); /* Fondo degradado para el botón */
+    border: none;
+    border-radius: 50px; /* Bordes completamente redondeados */
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Efecto al pasar el mouse sobre el botón */
+.welcome-button:hover {
+    transform: translateY(-3px); /* Eleva el botón ligeramente */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
