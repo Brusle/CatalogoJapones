@@ -1,7 +1,16 @@
 from django.contrib import admin
-from .models import Cliente
+# CORRECCIÓN: Importamos los nuevos modelos Anime y Personaje
+from .models import Anime, Personaje
 
-# Register your models here.
-@admin.register(Cliente)
-class ClienteAdmin(admin.ModelAdmin):
-    list_display = ('nombre', 'apellido', 'correo', 'telefono')
+# Registramos el modelo Anime en el panel de administrador
+@admin.register(Anime)
+class AnimeAdmin(admin.ModelAdmin):
+    list_display = ('nombre',)
+    search_fields = ('nombre',)
+
+# Registramos el modelo Personaje en el panel de administrador
+@admin.register(Personaje)
+class PersonajeAdmin(admin.ModelAdmin):
+    list_display = ('nombre', 'anime')
+    list_filter = ('anime',)
+    search_fields = ('nombre', 'biografia', 'anime__nombre')

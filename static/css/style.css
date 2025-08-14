@@ -3,11 +3,11 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    color: white;
+    color: white; /* Color de texto por defecto para la barra y títulos */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    position: relative;
+    position: relative; /* Necesario para la capa de distorsión */
 }
 
 /* Capa de distorsión que se aplica sobre el fondo */
@@ -18,9 +18,9 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(8px);
-    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.5); /* Capa oscura */
+    backdrop-filter: blur(8px); /* Efecto de desenfoque */
+    z-index: -1; /* Se posiciona detrás de todo el contenido */
 }
 
 /* Clases específicas para cada fondo de página */
@@ -44,7 +44,7 @@ body.results-bg { background-image: url('../images/fondo4.png'); }
     top: 0;
     left: 0;
     box-sizing: border-box;
-    z-index: 100;
+    z-index: 100; /* Asegura que esté por encima de todo */
 }
 
 .navbar-brand {
@@ -54,8 +54,6 @@ body.results-bg { background-image: url('../images/fondo4.png'); }
     color: white;
 }
 
-/* ... (otros estilos de la barra de navegación que ya tienes) */
-
 
 /* --- PÁGINA DE BIENVENIDA --- */
 .welcome-container {
@@ -64,8 +62,15 @@ body.results-bg { background-image: url('../images/fondo4.png'); }
     align-items: center;
     height: 100vh;
     text-align: center;
-    position: relative; 
+    position: relative;
     z-index: 1;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    align-items: center;
 }
 
 
@@ -218,46 +223,6 @@ body.results-bg { background-image: url('../images/fondo4.png'); }
 
 
 /* --- BOTONES (ESTILOS COMPARTIDOS) --- */
-.welcome-button, .search-submit-btn, .search-again-btn, .back-to-search-btn, .catalog-btn {
-    display: inline-block;
-    padding: 15px 30px;
-    font-size: 1.2em;
-    font-weight: bold;
-    color: white;
-    border-radius: 50px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    border: none;
-}
-
-.welcome-button:hover, .search-submit-btn:hover, .search-again-btn:hover, .back-to-search-btn:hover, .catalog-btn:hover {
-    transform: translateY(-3px);
-}
-
-.welcome-button {
-    background: linear-gradient(to right, #fe8c00, #f83600);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-.welcome-button:hover { box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); }
-
-.search-submit-btn, .search-again-btn, .back-to-search-btn {
-    background: linear-gradient(to right, #6a11cb, #2575fc);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-.search-submit-btn:hover, .search-again-btn:hover, .back-to-search-btn:hover { box-shadow: 0 8px 25px rgba(37, 117, 252, 0.4); }
-
-.catalog-btn {
-    background: none;
-    border: 2px solid rgba(255, 255, 255, 0.7);
-    padding: 10px 25px;
-    font-size: 1em;
-}
-.catalog-btn:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: white;
-}
-
 .metric-btn {
     padding: 10px 20px;
     font-size: 0.9em;
@@ -280,4 +245,93 @@ body.results-bg { background-image: url('../images/fondo4.png'); }
     color: white;
     border-color: transparent;
     box-shadow: 0 2px 10px rgba(254, 140, 0, 0.4);
+}
+
+.welcome-button {
+    display: inline-block;
+    padding: 18px 35px;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(to right, #fe8c00, #f83600);
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.admin-button {
+    display: inline-block;
+    padding: 16px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    border-radius: 50px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.admin-button:hover {
+    background-color: white;
+    color: #333;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+}
+
+.search-submit-btn, .search-again-btn, .back-to-search-btn, .catalog-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    border-radius: 50px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border: none;
+}
+
+.search-submit-btn:hover, .search-again-btn:hover, .back-to-search-btn:hover, .catalog-btn:hover {
+    transform: translateY(-3px);
+}
+
+.search-submit-btn, .search-again-btn, .back-to-search-btn {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.search-submit-btn:hover, .search-again-btn:hover, .back-to-search-btn:hover {
+    box-shadow: 0 8px 25px rgba(37, 117, 252, 0.4);
+}
+
+/* Revisa que este bloque exista en tu CSS */
+
+.catalog-btn {
+    display: inline-block; /* Importante para que tome estilos de botón */
+    padding: 10px 25px;
+    font-size: 1em;
+    font-weight: bold; /* Añadido para consistencia */
+    color: white;
+    border-radius: 50px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Transición suave */
+    background: none;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+}
+
+.catalog-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: white;
+    transform: translateY(-3px); /* Efecto de elevación */
 }

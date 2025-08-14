@@ -311,3 +311,8 @@ if os.getenv('CORS_ALLOWED_ORIGINS') != 'None':
 
 if os.getenv('CSRF_TRUSTED_ORIGINS') != 'None':
     CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS').split(',')
+
+
+# Al final de settings.py
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'

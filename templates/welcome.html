@@ -9,7 +9,10 @@
 <body class="welcome-bg">
 
     <div class="welcome-container">
-        <a href="{% url 'search_selection' %}" class="welcome-button">Iniciar Búsqueda</a>
+        <div class="button-group">
+            <a href="{% url 'search_selection' %}" class="welcome-button">Iniciar Búsqueda</a>
+            <a href="{% url 'admin:index' %}" class="admin-button">Administrar</a>
+        </div>
     </div>
 
 </body>
